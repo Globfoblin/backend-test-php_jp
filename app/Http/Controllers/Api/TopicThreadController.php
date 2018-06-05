@@ -20,25 +20,9 @@ class TopicThreadController extends Controller
      */
     public function show(Topic $topic)
     {
-        return $this->outputMessages(
-            $topic->messages()
-                ->where('parent_id', 0)
-        );
-    }
-
-    /**
-     * @param Collection|Relation $messages
-     * @return array
-     */
-    protected function outputMessages($messages)
-    {
-        $output = [];
-        foreach ($messages->get() as $message) {
-            $data = $message->toArray();
-            $data['children'] = $this->outputMessages(Message::where('parent_id', $message->id));
-            $output[] = $data;
-        }
-
-        return $output;
+        return $topic->messages()
+            ->with('children')
+            ->get()
+            ->toArray();
     }
 }
