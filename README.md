@@ -273,3 +273,12 @@ Users are the entities within the system that can create messages, and topics.
 - Retrieve user profile: `GET /api/v1/users/{id}/profile`
 - Update user profile: `PATCH /api/v1/users/{id}/profile`
 
+
+#### Feedback
+Task 1
+- Unsure on what the parent_id column refers to for messages
+- Sections do not appear to need a seed
+
+
+
+
