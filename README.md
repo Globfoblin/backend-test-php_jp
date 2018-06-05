@@ -30,11 +30,10 @@ Other hints: feel free to use community packages, you don't have to write everyt
 Currently our seeds are incomplete. This makes it hard to test the application and for our frontend team to work on the 
 interface.  Please add seeds for the following models:
 
-- Sections
 - Topics
 - Messages
 
-It would be great of there were some message seeds demonstrating the nested parent_id relationship that messages
+It would be great if there were some message seeds demonstrating the nested parent_id relationship that messages
 within a topic can have.
 
 #### Task 2 - Add authentication 
@@ -49,10 +48,10 @@ that requires a valid API key.
 
 The controller  `App\Http\Controllers\Api\TopicThreadController` has been put together by one of our 
 developers in a hurry.  This controller returns a nested list of messages for a particular topic but now it's time to 
-refactor it into something more readable and maintable.
+refactor it into something more readable and maintainable.
 
 * Write a test that shows that the current controller works
-* Refactor controller for readability / perfomance / etc.
+* Refactor controller for readability / performance / etc.
 * Create any methods and/or classes you deem necessary
 * Improve any logic
 * Refine the test (if necessary)
@@ -119,7 +118,7 @@ not already been approved.
 
 It looks like we've got a few role/security related issues we need you to clean up in the users endpoints.
 
-- Only Authed users can update their own account.
+- Only authorized users can update their own account.
 - Only moderators can update other user's accounts.
 - Only moderators can delete accounts.
 - When you delete a user, all of that user's topics and messages should also be deleted, or flagged somehow.
@@ -143,7 +142,7 @@ them will have null values - and our and our forum is in production!
 
 #### Task 13 - Add pagination to the messages controller
 
-Wwoww, we're so popular right nowQ  The list of messages returned from the GET `/api/v1/messages` endpoint is pretty
+Wwoww, we're so popular right now. The list of messages returned from the GET `/api/v1/messages` endpoint is pretty
 big. 
 
 - Implement pagination on the messages controller.
@@ -274,14 +273,23 @@ Users are the entities within the system that can create messages, and topics.
 - Update user profile: `PATCH /api/v1/users/{id}/profile`
 
 
-#### Feedback
-My Postman Collection:
-https://www.getpostman.com/collections/68332966cec58291ec14
+## My Feedback
 
-Task 1
-- Unsure on what the parent_id column refers to for messages
-- Sections do not appear to need a seed
+I decided to place all of my endpoints and testing references in a [Postman Collection](https://www.getpostman.com/collections/68332966cec58291ec14) for ease of use and to get broader access to the applications endpoints.
 
+I allotted myself around 3 hours to get as much done in sequential order from the README.md that was provided whilst taking my time and thoroughly implementing logical solutions to the tasks at hand.
+
+#### Task 1
+- I was unsure on what the parent_id column referred to for the Message model, however after some investigation it became apparent that it was for threaded/nested messages
+- Sections did not appear to need a seed however were asked to be implemented - correct me if I'm wrong about this
+
+#### Task 2
+- Authentication was fun and a breeze, snapping in JWT with the default Laravel user model is easy and fun
+- Protecting routes was a task that had me questioning some practices that I considered (the different ways to apply middleware to different routes/controllers) however I went with a route group approach which seemed to encompass the application nicely
+
+#### Task 3
+- Writing tests for the TopicThreadController was a good way to see how future implementations of the logic behind the recursive functionality would change and take shape (super helpful test)
+- I first thought about ways to go about re-writing the recursive functionality of the controller ("should I use a library perhaps?" was one of them) but instead decided to leverage Laravel's Eloquent relationships to nicely nest children models inside each other efficiently
 
 
 
