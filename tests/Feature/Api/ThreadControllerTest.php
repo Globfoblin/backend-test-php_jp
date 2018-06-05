@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\TopicThreadController;
 use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class ThreadControllerTest extends TestCase
 {
     /**
      * Test to see if show() gives us messages
