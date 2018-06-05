@@ -25,6 +25,8 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
 
 
     // Users
+    Route::post('/users/login', "UserAuthController@login");
+    Route::post('/users/register', "UserAuthController@register");
     Route::get('/users/{user}/profile', 'UserProfileController@show');
     Route::patch('/users/{user}/profile', 'UserProfileController@update');
     Route::apiResource('users', 'UserController');
