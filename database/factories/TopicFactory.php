@@ -14,7 +14,13 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Topic::class, function (Faker $faker) {
+    $sections = \App\Models\Section::all()->pluck('id')->toArray();
+    $users = \App\Models\User::all()->pluck('id')->toArray();
+
     return [
-        // TODO
+        'section_id' => $faker->randomElement($sections),
+        'title' => $faker->title,
+        'body' => $faker->paragraph,
+        'user_id' => $faker->randomElement($users),
     ];
 });

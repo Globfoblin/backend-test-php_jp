@@ -14,7 +14,16 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Message::class, function (Faker $faker) {
+    $setHighlight = random_int(0, 1);
+    $setParent = random_int(0, 1);
+    $topics = \App\Models\Topic::all()->pluck('id')->toArray();
+    $users = \App\Models\User::all()->pluck('id')->toArray();
+
     return [
-        // TODO
+        'topic_id' => $faker->randomElement($topics),
+        'parent_id' => $setParent ? $faker->randomElement($topics) : 0,
+        'body' => $faker->paragraph,
+        'is_highlight' => $setHighlight,
+        'user_id' => $faker->randomElement($users),
     ];
 });
