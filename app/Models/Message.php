@@ -13,4 +13,14 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'owned_by_user_id');
     }
+
+    public function allChildren()
+    {
+        return $this->hasMany(Message::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->allChildren()->with('children');
+    }
 }
