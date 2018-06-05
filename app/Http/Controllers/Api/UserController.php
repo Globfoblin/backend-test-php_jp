@@ -50,7 +50,6 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @Todo Check only authed user or
      * @param  \Illuminate\Http\Request $request
      * @param  \App\Models\User      $user
      * @return User
@@ -65,7 +64,6 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @todo Check only authed user or moderator can delete this resource
      * @todo We should delete the users
      * @param  \App\Models\User $user
      * @throws \Exception

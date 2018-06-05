@@ -20,8 +20,10 @@ class TopicThreadController extends Controller
      */
     public function show(Topic $topic)
     {
-        return $this->outputMessages($topic->messages()
-            ->where('parent_id', 0));
+        return $this->outputMessages(
+            $topic->messages()
+                ->where('parent_id', 0)
+        );
     }
 
     /**
